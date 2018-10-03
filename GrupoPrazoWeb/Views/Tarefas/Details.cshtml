@@ -1,0 +1,35 @@
+﻿@model GrupoPrazo_Infra.Entidades.Tarefa
+
+@{
+    ViewBag.Title = "Dados da Tarefa";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Alterar", "Edit", new { id = Model.Id },  new { @class = "btn btn-primary btn-xs" }) 
+    @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-danger btn-xs" })
+</p>

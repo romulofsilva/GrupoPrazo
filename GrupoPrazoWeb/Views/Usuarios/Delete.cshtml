@@ -1,0 +1,85 @@
+﻿@model GrupoPrazo_Infra.Entidades.Usuario
+
+@{
+    ViewBag.Title = "Excluir Usuário";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Permissao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Permissao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Senha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Senha)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default btn-danger btn-xs" data-toggle="modal" data-target="#modal-mensagem" />
+            @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-danger btn-xs" })
+        </div>
+    }
+
+    <div class="modal fade" id="modal-mensagem">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                    <h4 class="modal-title">Exclusão</h4>
+
+                </div>
+                <div class="modal-body">
+                    <p>Deseja excluir o usuário <span><b>@Model.Nome ?</b></span></p>
+
+                </div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="modal-footer">
+                        <input type="submit" value="Sim" class="btn btn-default btn-success" />
+                        <button type="button" class="btn btn-default btn-danger " data-dismiss="modal">Não</button>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

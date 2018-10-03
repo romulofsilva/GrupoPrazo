@@ -1,0 +1,70 @@
+﻿@model GrupoPrazo_Infra.Entidades.Tarefa
+
+@{
+    ViewBag.Title = "Excluir Tarefa";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<div>
+    <h4>Tarefa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default btn-danger btn-xs" data-toggle="modal" data-target="#modal-mensagem" />
+            @Html.ActionLink("Voltar", "Index", new { @class = "btn btn-info btn-xs" })
+        </div>
+    }
+
+    <div class="modal fade" id="modal-mensagem">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                    <h4 class="modal-title">Exclusão</h4>
+
+                </div>
+                <div class="modal-body">
+                    <p>Deseja excluir a tarefa <span><b>@Model.Descricao ?</b></span></p>
+
+                </div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="modal-footer">
+                        <input type="submit" value="Sim" class="btn btn-default btn-success" />
+                        <button type="button" class="btn btn-default btn-danger " data-dismiss="modal">Não</button>
+
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
